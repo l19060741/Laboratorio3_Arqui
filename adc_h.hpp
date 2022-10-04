@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ADC_HPP
+#define ADC_HPP
 #include<iostream>
 #include <string>
 #include <stdlib.h>
@@ -9,32 +10,25 @@ using namespace std;
 class ADC{
 	private:
   
-		int _num;
+		int _num;		
 		int _resolution;
 		int _Fs;
-		int _numeroCanales;
+		float _lectura;
+		float _lectura_v;
 		
 	public:
-		float _lectura;
-		
-		/*********	****************************************************
-		//           CONSTRUCTOR
-		***********************************************************/
-		ADC(int num,int resolution,int Fs,int numeroCanales,float lectura);
-		ADC();
-		//***************GETTERS
-		int getNum();
+		int _canal;
+		int _numeroCanales;
+
+		ADC(int, int, int, float, float, int, int);	// CONSTRUCTOR1
+		ADC();										// CONSTRUCTOR2
+		//GETTERS
+		int getNumCanales();
 		int getResolution();
 		int getFs();
 				
-		//*****************SETTERS
-		void setResolution(int resolution);
-		void setFs(int Fs);
-		void setLectura(float lectura);
-		
 		//METODOS
-		int Captura();
-		void Conversion(int resolution, float lectura, int i);	
+		void Captura();	
 		void MostrarDatos();			
 };
-
+#endif

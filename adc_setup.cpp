@@ -5,23 +5,27 @@
 /************************************************
 *                  CONSTRUCTOR 
 ************************************************/
-ADC::ADC(int num,int resolution,int Fs,int numeroCanales, float lectura){
+ADC::ADC(int num,int resolution,int Fs,float lectura, float lectura_v, int canal, int numeroCanales){
 
 	_num=num;
 	_resolution=resolution;
 	_Fs=Fs;
-	_numeroCanales=numeroCanales;
 	_lectura=lectura;
-	
+	_lectura_v=lectura_v;
+	_canal=canal;
+	_numeroCanales=numeroCanales;	
 }
 
 
 ADC::ADC(){
+	_canal=0;
+	_resolution=0;
+	_Fs=0;
 }
 /************************************************
 *   			GETTERS
 ************************************************/
-int ADC::getNum(){
+int ADC::getNumCanales(){
 	return _numeroCanales;
 }
 int ADC::getResolution(){
@@ -31,51 +35,27 @@ int ADC::getFs(){
 	return _Fs;
 }
 /************************************************
-*  			SETTERS 
-************************************************/
-void ADC::setResolution(int resolution){
-	_resolution=resolution;
-}
-void ADC::setFs(int Fs){
-	_Fs=Fs;
-}
-
-void ADC::setLectura(float lectura){
-	_lectura=lectura;
-}
-/************************************************
 *   			METODOS 
 ************************************************/
-int ADC::Captura(){
+void ADC::Captura(){
+	
 	cout<<endl<<"** Introduce Datos **"<<endl;
-	cout<<"Ingrese el numero de canales: ";
-	cin>> _numeroCanales;
-	cout<<"Dame la resolucion: ";
+	cout<<"Dame la resolucion (Opciones: 8, 10, 12): ";
 	cin>> _resolution;
 	cout<<"Dame la frecuencia de muestreo: ";
 	cin>> _Fs;
-	
-	int i;
-	string canales[32];
-	for(i=0;i<_numeroCanales;i++)
-	{	
-		cout<<endl<<"Ingresa el canal numero "<<i+1<<" que quieres usar:"<<endl;
-		cin>>canales[i];
-	}
-	 return _resolution;
+	cout<<"Dame la lectura en volts: ";
+	cin>> _lectura_v;	
+	_lectura=_lectura_v * (pow(2,_resolution))/3.3;	
 }
-
-void ADC::Conversion(int resolution, float lectura_v, int i){
-	float lectura;
-	lectura=lectura_v * (pow(2,resolution))/3.3;
-	std::cout<<"\n"<<"La lectura del canal "<<i+1<<" es "<<lectura<<std::endl;
-}
-
 
 void ADC::MostrarDatos(){
 	std::cout<<"\n"<<"*** Imprimiendo Datos *** "<<std::endl;
-	std::cout<<"Numero:"<<_num<<std::endl;
-	std::cout<<"Resolucion:"<<_resolution<<std::endl;
+	std::cout<<"Resolucion: "<<_resolution<<std::endl;
 	std::cout<<"Fs: "<<_Fs<<std::endl;
+	std::cout<<"Lectura en volts: "<<_lectura_v<<std::endl;
+	std::cout<<"Lectura: "<<_lectura<<std::endl;
 }
+
+
 

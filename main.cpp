@@ -9,22 +9,36 @@ using namespace std;
 *                 MAIN
 ************************************************/
 int main(int argc, char** argv) {
-	int resolution;
+	int i;
 	
 	cout<<"ARQUITECTURA DE PROGRAMACIÓN PARA HARDWARE"<<endl;
 	cout<<"LABORATORIO 3"<<endl;
 	cout<<"ANAHI GONZALEZ HOLGUIN"<<endl;
 	cout<<"CONFIGURACION DEL ADC"<<endl;
-	ADC adc;
-	resolution=adc.Captura();
-	int i;
-	for(i=0;i<adc.getNum();i++)
-	{	
-		float lectura_v;
-		cout<<endl<<"Ingresa la lectura en volts del canal numero "<<i+1<<endl;
-		cin>>lectura_v;
-		adc.Conversion(resolution,lectura_v,i);
+	
+	int numeroCanales;
+	cout<<"Introduzca el numero de canales (Opciones: 1-32)"<<endl;
+    cin>>numeroCanales;
+    
+    cout<<"Se activaron "<<numeroCanales<<" canales"<<endl;	
+	ADC *adc1 = new ADC[numeroCanales];
+	
+	//CAPTURA DE LOS DATOS
+	for (i=0;i<numeroCanales;i++)
+	{
+		cout<<"Canal numero "<<i+1<<endl;
+		adc1[i].Captura();
 	}
+	  
+	//SALIDA DE LOS DATOS  
+	  for (int i=0;i<numeroCanales;i++)
+	{	
+		cout<<"Canal numero "<<i+1<<endl;
+		adc1[i].MostrarDatos();
+    }
+	
+	delete [] adc1;	
 	
 	return 0;
 }
+
