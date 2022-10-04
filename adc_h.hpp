@@ -13,7 +13,6 @@ class ADC{
 		int _resolution;
 		int _Fs;
 		int _numeroCanales;
-		string _nombreCanal;
 		
 	public:
 		float _lectura;
@@ -21,7 +20,7 @@ class ADC{
 		/*********	****************************************************
 		//           CONSTRUCTOR
 		***********************************************************/
-		ADC(int num,int resolution,int Fs,int numeroCanales,string _nombreCanal,float lectura);
+		ADC(int num,int resolution,int Fs,int numeroCanales,float lectura);
 		ADC();
 		//***************GETTERS
 		int getNum();

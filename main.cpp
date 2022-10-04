@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "adc_h.hpp"
-//#include "adc_setup.cpp"
 
 using namespace std;
 /************************************************
@@ -11,7 +10,10 @@ using namespace std;
 ************************************************/
 int main(int argc, char** argv) {
 	int resolution;
-	//float lectura[32];
+	
+	cout<<"ARQUITECTURA DE PROGRAMACIÓN PARA HARDWARE"<<endl;
+	cout<<"LABORATORIO 3"<<endl;
+	cout<<"ANAHI GONZALEZ HOLGUIN"<<endl;
 	cout<<"CONFIGURACION DEL ADC"<<endl;
 	ADC adc;
 	resolution=adc.Captura();
@@ -24,34 +26,5 @@ int main(int argc, char** argv) {
 		adc.Conversion(resolution,lectura_v,i);
 	}
 	
-	
-	/*// CREACION DE OBJETOS
-	
-	Mascota m1("Zeus","Gato","Macho",2);
-	
-	//MOSTRAMOS DATOS 
-	cout<<"La mascota: "<<m1.getName()<<endl;
-	cout<<"Su edad es: "<<m1.getEdad()<<endl;
-	
-	cout<<endl<<"--Cambiando edad y nombre-- "<<endl;
-	m1.setEdad(10);
-	
-	cout<<"Ahora la edad es: "<<m1.getEdad()<<endl<<endl;
-	m1.setName("Odin");			//"inline" indica al compilador que "trate" de poner el codigo de _name = name; y no haga la llamada a la funcion para que sea mas rapido
-	
-	m1.MostrarDatos();
-	
-	// EJEMPLO  DE FUNCION STATIC
-	cout<<endl<<" LAS MASCOTAS TIENEN: "<< Mascota::getPatas()<<" PATAS"<<endl;
-	
-  
-	Gato g1("Zeus","Gato","Siames",2);
-	g1.MostrarDatos();
-	g1.daPatita();
-	
-	Perro perro1("Hulk","Perro","Pastor Aleman",5);
-	perro1.MostrarDatos();
-	
- 	perro1.Ladra();*/
 	return 0;
 }

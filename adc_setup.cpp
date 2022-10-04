@@ -5,13 +5,12 @@
 /************************************************
 *                  CONSTRUCTOR 
 ************************************************/
-ADC::ADC(int num,int resolution,int Fs,int numeroCanales, string nombreCanal, float lectura){
+ADC::ADC(int num,int resolution,int Fs,int numeroCanales, float lectura){
 
 	_num=num;
 	_resolution=resolution;
 	_Fs=Fs;
 	_numeroCanales=numeroCanales;
-	_nombreCanal=nombreCanal;
 	_lectura=lectura;
 	
 }
